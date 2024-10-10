@@ -1,0 +1,30 @@
+{
+  "name": "atv-rapper",
+  "version": "1.0.0",
+  "description": "Atividade Rapper ",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+      "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Amandamecchi/Atividade-Rapper.git"
+  },
+  "keywords": [
+    "Rapper",
+    "Suspeito"
+  ],
+  "author": "Amanda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Amandamecchi/Atividade-Rapper/issues"
+  },
+  "homepage": "https://github.com/Amandamecchi/Atividade-Rapper#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
