@@ -36,3 +36,11 @@ let suspeito = [
   },
 ];
 
+// Rota para listar todos os suspeito
+suspeitoRoutes.get("/", (req, res) => {
+  return res.status(200).json(suspeito);
+});
+
+
+
+export default suspeitoRoutes;
