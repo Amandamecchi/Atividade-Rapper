@@ -36,12 +36,12 @@ let suspeitos = [
     envolvimento: "nao",
     descricao: ["pequena", "Ariana",]
   },
-]
+];
 
 // Rota para listar todos os suspeitos
 suspeitosRoutes.get("/", (req, res) => {
   return res.status(200).json(suspeitos)
-})
+});
 
 // Rota para cadastrar um novo suspeito
 suspeitosRoutes.post("/", (req, res) => {
@@ -51,7 +51,8 @@ suspeitosRoutes.post("/", (req, res) => {
   if (!nome || !idade || !envolvimento) {
     return res.status(400).json({
       message: "Os campos nome, idade, envolvimento sao obrigatorios!",
-    })
+    });
+
   }
   if (envolvimento != "sim" && envolvimento != "não") {
     return res.status(400).send({
@@ -96,6 +97,45 @@ suspeitosRoutes.get("/:id", (req, res) => {
       .json({ message: `suspeito com id ${id} não encontrado` })
   }
   return res.status(200).json(suspeito)
+})
+
+// Rota para atualizar um suspeito pelo id
+suspeitosRoutes.put("/:id", (req, res) => {
+  const { id } = req.params
+  const { nome, idade, envolvimento, descricao} = req.body
+
+
+  // Busca um suspeito pelo id no array de suspeitos
+  const suspeito = suspeitos.find((suspect) => suspect.id == id)
+
+
+  // Validação dos campos obrigatórios
+  if (!nome || !idade || !envolvimento) {
+    return res.status(400).json({
+      message: "Os campos nome, idade, envolvido sao obrigatorios!",
+    })
+  }
+  if (envolvido != "sim" && envolvido != "não") {
+    return res.status(400).send({
+      message: "Digite 'sim' ou 'não'! em envolvimento",
+    })
+  }
+  if ((Number.isInteger(idade)) == false  ) {
+    return res.status(400).send({
+      message: "Digite um numero inteiro para idade!",
+    })
+  }
+
+  suspeito.nome = nome
+  suspeito.idade = idade
+  suspeito.envolvido = envolvimento
+  suspeito.descricao = descricao
+
+
+  return res.status(200).json({
+    message: "Suspeito atualizado com sucesso!",
+    suspeito,
+  })
 })
 
 
