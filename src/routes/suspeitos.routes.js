@@ -1,46 +1,43 @@
-import { Router } from "express";
+import { Router } from "express"
 
-const suspeitoRoutes = Router();
+const suspeitosRoutes = Router()
 
-// Array com suspeito pré-cadastrados
-let suspeito = [
-  {
-    id: Math.floor(Math.random() * 1000000),
-    nome: "Beyonce",
-    idade: 43,
-    envolvimento: true,
-  },
+
+// Array - suspeitos pré-cadastrados
+let suspeitos = [
   {
     id: Math.floor(Math.random() * 1000000),
     nome: "will Smith",
     idade: 56,
-    envolvimento: true,
+    envolvimento: "sim",
+    descricao: ["Maluco no pedaço", "Cabelo escuro",]
   },
+
   {
     id: Math.floor(Math.random() * 1000000),
-    nome: "Ariana Grande",
-    idade: 31,
-    envolvimento: false,
+    nome: "Beyonce",
+    idade: 43,
+    envolvimento: "sim",
+    descricao: ["She knows", "Diva Pop",]
   },
+
   {
     id: Math.floor(Math.random() * 1000000),
     nome: "Kanye West",
     idade: 47,
-    envolvimento: false,
+    envolvimento: "nao",
+    descricao: ["louco", "Incompreendido",]
   },
+
   {
     id: Math.floor(Math.random() * 1000000),
-    nome: "Jay Z",
-    idade: 54,
-    envolvimento: true,
+    nome: "Ariana Grande",
+    idade: 31,
+    envolvimento: "nao",
+    descricao: ["pequena", "Ariana",]
   },
-];
-
-// Rota para listar todos os suspeito
-suspeitoRoutes.get("/", (req, res) => {
-  return res.status(200).json(suspeito);
-});
+]
 
 
+export default suspeitosRoutes
 
-export default suspeitoRoutes;
