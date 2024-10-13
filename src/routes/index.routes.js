@@ -1,7 +1,7 @@
 import { Router } from "express";
 
 // Lista de importação das rotas do projeto
-import suspeitosRoutes from "./suspeitos.routes.js";
+import suspeitoRoutes from "../routes/suspeitos.routes.js";
 
 const routes = Router();
 
@@ -11,6 +11,6 @@ routes.get("/", (req, res) => {
 });
 
 // Lista de uso das rotas do projeto
-routes.use("/suspeitos", suspeitosRoutes);
+routes.use("/suspeitos", suspeitoRoutes);
 
 export default routes;
