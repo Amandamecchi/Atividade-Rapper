@@ -107,15 +107,19 @@ suspeitosRoutes.put("/:id", (req, res) => {
 
   // Busca um suspeito pelo id no array de suspeitos
   const suspeito = suspeitos.find((suspect) => suspect.id == id)
-
+  if (!suspeito) {
+    return res
+      .status(404)
+      .json({ message: `suspeito com id ${id} não encontrado!` })
+  }
 
   // Validação dos campos obrigatórios
   if (!nome || !idade || !envolvimento) {
     return res.status(400).json({
-      message: "Os campos nome, idade, envolvido sao obrigatorios!",
+      message: "Os campos nome, idade, envolvimento sao obrigatorios!",
     })
   }
-  if (envolvido != "sim" && envolvido != "não") {
+  if (envolvimento != "sim" && envolvimento != "não") {
     return res.status(400).send({
       message: "Digite 'sim' ou 'não'! em envolvimento",
     })
@@ -128,7 +132,7 @@ suspeitosRoutes.put("/:id", (req, res) => {
 
   suspeito.nome = nome
   suspeito.idade = idade
-  suspeito.envolvido = envolvimento
+  suspeito.envolvimento = envolvimento
   suspeito.descricao = descricao
 
 
